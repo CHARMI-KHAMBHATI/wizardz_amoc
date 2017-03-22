@@ -16,7 +16,7 @@
 	  <a href="Upload_file.html">upload</a>
 	
 	<br>
-	
+	<table>
 	
 	<?php
 	include_once 'gpConfig.php';
@@ -29,59 +29,28 @@
 	$result=mysqli_query($conn, $sql);
 	$result=mysqli_query($conn, $sql);
 	echo "\n";
+	
+	echo '<script> var i=0;</script>';
+	
 	while($row=mysqli_fetch_array($result))
 	{
 	?>
-	<?php echo '<script> var object={"image": "uploads/" + $row['img_name'],
-	"first_name": $row['first_name'],
-	"last_name": $row['last_name'],
-	"name": $row['name'],
-	"type": $row['type'],
-	"used_for": $row['used_for'],
-	"price":$row['price'],
-	"description":$row['description']}
-	content.push(object);
-	(function(object){
-		var pdiv=document.createElement("div");
-		pdiv.class=content.indexOf(object);
-		document.body.appendChild(pdiv);
-		var imgTag=document.createElement("img");
-		imgTag.src=object.image;
-		imgTag.className="i"+content.indexOf(object);
-		document.getElementByClass(content.indexOf(object)).appendChild(imgTag);		
-		var ufor=document.createTextNode(object.used_for);
-		ufor.className="u"+content.indexOf(object);
-		document.getElementByClass(content.indexOf(object)).appendChild(ufor);
-		var name=document.createTextNode(object.name);
-		name.className="n"+content.indexOf(object);
-		document.getElementByClass(content.indexOf(object)).appendChild(name);
-		var price=document.createTextNode(object.price);
-		price.className="p"+content.indexOf(object);
-		document.getElementByClass(content.indexOf(object)).appendChild(price);
-
-		})(object);  </script>';?>
+	<div class="contents">
+	<img src="uploads/<?php echo $row['img_name'] ?>" width="20%" height="auto" >
+	
+	<p> <?php echo $row['name']; ?> </p>
+	<p><?php echo $row['used_for']; ?> </p>
+	<p><?php echo $row['price']; ?> </p>
+	</div>
+	<?php echo '<script>
+	ele.className=i.toString();
+	i++;</script>' ?>
 	<?php
 	}
-
+		
 	?>
-
+</table>
 </body>
 
 </html>
-<!--<table style="width:100%">
-		
-		<tr><td><img src="uploads/<?php echo $row['img_name']?>" width="20%" height="auto"></td></tr>
-		 <tr><td><?php echo $row['first_name']." ".$row['last_name'];?> </td></tr>
-		 <tr><td><?php 		  echo $row['name'];?> </td></tr>
-		 <tr><td><?php 		  echo $row['type'];?></td></tr>
-		 <tr><td><?php 		echo $row['used_for'];?> </td></tr>
-		 <tr><td><?php 	  echo $row['price'];?> </td></tr>
-		 <tr><td><?php 	  echo $row['description'];?> </td></tr>
-		 
-	</table>
-	<?php
-session_start();
-// ... php code ...
-echo '<script type="text/javascript">alert("Welcome '. $_SESSION['nume']. '");</script>';
-?> 
-	-->
+
