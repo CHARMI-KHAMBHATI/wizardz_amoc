@@ -3,7 +3,7 @@
 	background-color: 	 #ffd600;
 	height: 5em;
 }
-.navigation a
+.navigation ul li a
 {
 	display: block;
 	text-decoration: none;
@@ -16,4 +16,7 @@
 .navigation ul
 {
 	list-style-type: none;
+}
+#logout{
+	float: right;
 }
