@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 
 <html>
@@ -18,7 +17,7 @@
 	<div class="row">
 	<ul>
 	<li class="col-xs-4 col-md-2"><a href="./imageView.php">Home</a></li>
-	<li class="col-xs-4 col-md-2"><a href="Upload_file.html">Upload</a></li>
+	<li class="col-xs-4 col-md-2"><a href="./Upload_file.html">Upload</a></li>
 	<li class="col-xs-4 col-md-2" id="logout"><a href="./logout.php">Logout</a></li>
 	</ul>
 	</div>	
@@ -33,7 +32,7 @@
 	
 	include("connection.php");
 	
-	echo $_SESSION['email']." its from me ".$_SESSION['id']."\n";
+	
 	
 	$sql= "select * from image_table,users order by img_id desc";
 	$result=mysqli_query($conn, $sql);
@@ -45,18 +44,17 @@
 	<table style="width:100%">
 		
 		<tr><td><img src="uploads/<?php echo $row['img_name']?>" width="20%" height="auto"></td></tr>
-		 <tr><td><?php echo $row['first_name']." ".$row['last_name'];?> </td></tr>
-		 <tr><td><?php 		  echo $row['name'];?> </td></tr>
-		 <tr><td><?php 		  echo $row['type'];?></td></tr>
-		 <tr><td><?php 		echo $row['used_for'];?> </td></tr>
-		 <tr><td><?php 	  echo $row['price'];?> </td></tr>
-		 <tr><td><?php 	  echo $row['description'];?> </td></tr>
+		 <tr><td><?php  echo $row['first_name']." ".$row['last_name'];?> </td></tr>
+		 <tr><td><?php 	echo $row['name'];?> </td></tr>
+		 <tr><td><?php  echo $row['type'];?></td></tr>
+		 <tr><td><?php 	echo $row['used_for'];?> </td></tr>
+		 <tr><td><?php 	echo $row['price'];?> </td></tr>
+		 <tr><td><?php 	echo $row['description'];?> </td></tr>
 		 
 		 </table>
 		
 	<?php
 	}
-
 	?>
 
 </body>
