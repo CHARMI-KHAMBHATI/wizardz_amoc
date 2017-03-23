@@ -8,30 +8,28 @@
 	<link rel="stylesheet" type="text/css" href="./css/style_home.css">
 	<script src="./script/jquery-3.2.0.min.js"></script>
 	<script src="./script/bootstrap.min.js"></script>
-	<!--<script src="http://code.jquery.com/jquery-3.2.1.js"
-  integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
-  crossorigin="anonymous"></script>-->
-	
 
 </head>
 <body>
-<div class="navigation">
+	<div class="navigation">
 	<div class="container">
-<div class="row">
+	<div class="row">
 	<ul>
-	<li class="col-xs-4 col-md-2">
-	<a href="Home.html">Home</a>
-	</li>
-	<li class="col-xs-4 col-md-2"><a href="Upload.html">Upload</a></li>
+	<li class="col-xs-4 col-md-2"><a href="./imageView.php">Home</a></li>
+	<li class="col-xs-4 col-md-2"><a href="Upload_file.html">Upload</a></li>
+	<li class="col-xs-4 col-md-2" id="logout"><a href="./logout.php">Logout</a></li>
 	</ul>
-</div>	
-<form id="file-form" action="getdata.php" method="post" enctype="multipart/form-data">
+	</div>	
+	</div>
+	</div>
+	
+	<form>
   Type of the product:
   <input type="text" name="type" id="type"><br>
   Name of the product:
   <input type="text" name="name" id="name"><br>
   Price:
-  <input type="text" name="price" id="price"><br>
+  <input type="number" name="price" id="price"><br>
   Will be useful to:
   <input type="text" name="use" id="use"><br>
   Description:
@@ -40,10 +38,7 @@
   <input type="file" name="pic" id="pic" accept="image/*"><br>
   <input type="submit" name="submit" id="submit">
 
-</form>
-</div>
-
-</div>
+	</form>
 
 
 </body>
