@@ -1,27 +1,52 @@
 <?php
- date_default_timezone_set('Asia/Calcutta');
- include 'comment.inc.php';
- include 'connect.inc.php';
+//Include GP config file && User class
+include_once 'gpConfig.php';
+include_once 'User.php';
+
+if(isset($_GET['code'])){
+    $gClient->authenticate($_GET['code']);
+    $_SESSION['token'] = $gClient->getAccessToken();
+    header('Location: ' . filter_var($redirectURL, FILTER_SANITIZE_URL));
+}
+
+if (isset($_SESSION['token'])) {
+    $gClient->setAccessToken($_SESSION['token']);
+}
+
+if ($gClient->getAccessToken()) {
+    //Get user profile data from google
+    $gpUserProfile = $google_oauthV2->userinfo->get();
+    
+    //Initialize User class
+    $user = new User();
+    
+    //Insert or update user data to the database
+    $gpUserData = array(
+        'oauth_provider'=> 'google',
+        'oauth_uid'     => $gpUserProfile['id'],
+        'first_name'    => $gpUserProfile['given_name'],
+        'last_name'     => $gpUserProfile['family_name'],
+        'email'         => $gpUserProfile['email'],
+        'gender'        => $gpUserProfile['gender'],
+        'locale'        => $gpUserProfile['locale'],
+        'picture'       => $gpUserProfile['picture'],
+        'link'          => $gpUserProfile['link']
+    );
+    $userData = $user->checkUser($gpUserData);
+    
+    //Storing user data into session
+    $_SESSION['userData'] = $userData;
+	$_SESSION['email']= $userData['email'];
+	$_SESSION['id']= $userData['oauth_uid'];
+	
+		
+    header("location:imageView.php");
+	
+} else {
+    $authUrl = $gClient->createAuthUrl();
+    $output = '<a href="'.filter_var($authUrl, FILTER_SANITIZE_URL).'"><img src="images/glogin.png" alt=""/></a>';
+}
 
 ?>
 
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Index</title>
-	<link rel="stylesheet" type="text/css" href="style.css">
-</head>
-<body>
-<img alt="Image" src="flower2.jpg ">
-<?php
-	echo "<form method='POST' action='".setComment($conn)."'>
-		<input type='hidden' name='uid' value='Anonymous'>
-		<input type='hidden' name='date' value='".date('Y-m-d H:i:s')."'><br>
-		<textarea name='message' ></textarea><br>
-		<button type='submit' name='commentSubmit' >comment</button>
-	</form>";
-	getComment($conn);
-?>
-</body>
-</html>
-
+<div><?php echo $output;?></div>
