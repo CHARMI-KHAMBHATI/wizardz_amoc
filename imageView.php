@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 
 <html>
@@ -17,7 +18,7 @@
 	<div class="row">
 	<ul>
 	<li class="col-xs-4 col-md-2"><a href="./imageView.php">Home</a></li>
-	<li class="col-xs-4 col-md-2"><a href="./Upload_file.html">Upload</a></li>
+	<li class="col-xs-4 col-md-2"><a href="Upload_file.html">Upload</a></li>
 	<li class="col-xs-4 col-md-2" id="logout"><a href="./logout.php">Logout</a></li>
 	</ul>
 	</div>	
@@ -33,7 +34,6 @@
 	include("connection.php");
 	
 	
-	
 	$sql= "select * from image_table,users order by img_id desc";
 	$result=mysqli_query($conn, $sql);
 	$result=mysqli_query($conn, $sql);
@@ -41,20 +41,16 @@
 	while($row=mysqli_fetch_array($result))
 	{
 	?>
-	<table style="width:100%">
+	<div class="contents">
 		
-		<tr><td><img src="uploads/<?php echo $row['img_name']?>" width="20%" height="auto"></td></tr>
-		 <tr><td><?php  echo $row['first_name']." ".$row['last_name'];?> </td></tr>
-		 <tr><td><?php 	echo $row['name'];?> </td></tr>
-		 <tr><td><?php  echo $row['type'];?></td></tr>
-		 <tr><td><?php 	echo $row['used_for'];?> </td></tr>
-		 <tr><td><?php 	echo $row['price'];?> </td></tr>
-		 <tr><td><?php 	echo $row['description'];?> </td></tr>
-		 
-		 </table>
-		
+		<img src="uploads/<?php echo $row['img_name'] ?>" width="20%" height="auto" > 
+		 <p> <?php echo $row['name']; ?> </p>
+		 <p><?php echo $row['used_for']; ?> </p>
+		 <p><?php echo $row['price']; ?> </p>
+	</div>
 	<?php
 	}
+
 	?>
 
 </body>
