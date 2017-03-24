@@ -25,6 +25,37 @@
 
 	</div>
 	</div>
+	<?php
 	
+	
+	include("connection.php");
+	$id=$_GET['img'];
+	$sql= "select * from image_table natural join users where img_id='$id'";
+	$result=mysqli_query($conn, $sql);
+	while($row=mysqli_fetch_array($result))
+	{
+	?>
+	<br>
+		Uploaded by: 
+		<?php echo $row['first_name']." ".$row['last_name'];?>
+		<br>
+		<img src="uploads/<?php echo $row['img_name']?>" width="20%" height="auto">
+		<br>Name:
+		<?php echo $row['name']; ?>
+		
+		<br>Used for:
+		<?php echo $row['used_for']; ?>
+		
+		<br>Type:
+		<?php echo $row['type'];?>
+		
+		<br>Price
+		<?php echo $row['price']; ?>
+		
+		<br>Description:
+		<?php echo $row['description'];
+	}
+?>
+		<br>
 	</body>
 </html>
