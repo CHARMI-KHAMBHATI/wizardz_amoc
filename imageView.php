@@ -27,7 +27,6 @@
 	</div>
 	
 	
-	
 	<?php
 	include_once 'gpConfig.php';
 	
@@ -37,25 +36,25 @@
 	$sql= "select * from image_table order by img_id desc";
 	$result=mysqli_query($conn, $sql);
 	$result=mysqli_query($conn, $sql);
-	echo "\n";
 	
 	while($row=mysqli_fetch_array($result))
 	{
 	?>
+	
 	<div class="col-xs-6 col-md-4" id="contents">
 		
-		<a><img src="uploads/<?php echo $row['img_name'] ?>" width="20%" height="auto" > </a>
+		<a href="./description.php"><img src="uploads/<?php echo $row['img_name'] ?>"> </a>
 		 <div id="contents_description">
 		 <p>Name: <span class="description"><?php echo $row['name']; ?></span> </p>
 		 <p>Useful for: <span class="description"><?php echo $row['used_for']; ?></span> </p>
-		 <p>Price: <span class="description"><?php echo $row['price']; ?></span> </p>
+		 <p>Price: Rs.<span class="description"><?php echo $row['price']; ?></span> </p>
 		 </div>
 	</div>
+
 	<?php
 	}
 
 	?>
-
 </body>
 
 </html>
