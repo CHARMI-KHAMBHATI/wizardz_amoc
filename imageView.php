@@ -6,8 +6,8 @@
 	<title>QuickBucket</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device.width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" href="./styles/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="./css/style_home.css">
+	<link rel="stylesheet" type="text/css" href="./styles/bootstrap.min.css">
 	<script src="./script/jquery-3.2.0.min.js"></script>
 	<script src="./script/bootstrap.min.js"></script>
 	</head>
@@ -19,7 +19,6 @@
 	<ul>
 	<li class="col-xs-4 col-md-2"><a href="./imageView.php">Home</a></li>
 	<li class="col-xs-4 col-md-2"><a href="Upload_file.html">Upload</a></li>
-	<li class="col-xs-4 col-md-2"><a href="myUploads.php">MyUploads</a></li>
 	<li class="col-xs-4 col-md-2" id="logout"><a href="./logout.php">Logout</a></li>
 	</ul>
 	</div>	
@@ -45,10 +44,12 @@
 	?>
 	<div class="col-xs-6 col-md-4" id="contents">
 		
-		<img src="uploads/<?php echo $row['img_name'] ?>" width="20%" height="auto" > 
-		 <p> <?php echo $row['name']; ?> </p>
-		 <p><?php echo $row['used_for']; ?> </p>.
-		 <p><?php echo $row['price']; ?> </p>
+		<a><img src="uploads/<?php echo $row['img_name'] ?>" width="20%" height="auto" > </a>
+		 <div id="contents_description">
+		 <p>Name: <span class="description"><?php echo $row['name']; ?></span> </p>
+		 <p>Useful for: <span class="description"><?php echo $row['used_for']; ?></span> </p>
+		 <p>Price: <span class="description"><?php echo $row['price']; ?></span> </p>
+		 </div>
 	</div>
 	<?php
 	}
