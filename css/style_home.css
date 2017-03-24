@@ -18,7 +18,7 @@ display: block;
 .navigation
 {
 	background-color: 	 #ffd600;
-	height: 5em;
+	height: 5%;
 }
 .navigation ul li a
 {
@@ -38,38 +38,46 @@ display: block;
 	float: right;
 }
 #contents{
+	display: inline-block;
 	width: 25%;
 	height: 30%;
 }
 #contents a img
 {
+	display: inline-block;
 	max-width: 100%;
 	min-width: 100%;
-	height: 75%;
+	height: 15em;
+	object-fit: cover;
+	padding-top: 10px;
 
 }
 #contents_description{
-	font-size: 75%;
-	line-height: .5px;
+	font-size: 85%;
 	width: 100%;
 	height: 25%;
 	text-align: left;
 }
-
+#signup{
+	top: 50px;
+	background-color:  #ffd600;
+}
 #loginThroughGmail{
 	display: inline-block;
 	width: 100%;
 	height: 100vh;
 }
-#sign_up{
-	font-size: 3em;
+#sign_up {
+	color: white;
 	position: relative;
-	
+	font-size: 3em;
+	text-align: center;
+	font-family: 'Bitter', serif;
+}
+#sign_up{
+	top:150px;
 }
 #loginThroughGmail a img{
-	display: inline-block;
-	position: relative;
-	vertical-align: top;
+	height: 50px;
 }
-
 
