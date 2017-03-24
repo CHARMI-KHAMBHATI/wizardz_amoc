@@ -26,7 +26,7 @@
 	</div>
 	</div>
 	
-	
+	<div class=="container">
 	<?php
 	include_once 'gpConfig.php';
 	
@@ -36,24 +36,29 @@
 	$sql= "select * from image_table order by img_id desc";
 	$result=mysqli_query($conn, $sql);
 	$result=mysqli_query($conn, $sql);
-	
+	$i=0;
 	while($row=mysqli_fetch_array($result))
-	{
+	{$i=$i+1;
 	?>
-	
+	<?php if($i%3==0){ ?>
+	<div class="row">
+	<?php } ?>
 	<div class="col-xs-6 col-md-4" id="contents">
 		
 		<a href="./description.php?img=<?php echo $row['img_id']?>"><img src="uploads/<?php echo $row['img_name'] ?>"> </a>
 		 <div id="contents_description">
 		 <p>Name: <span class="description"><?php echo $row['name']; ?></span> </p>
 		 <p>Useful for: <span class="description"><?php echo $row['used_for']; ?></span> </p>
-		 <p>Price: Rs.<span class="description"><?php echo $row['price']; ?></span> </p>
+		 <p>Price: Rs.<span class="description"><?php echo $row['price'];  echo $i;?></span> </p>
 		 </div>
 	</div>
-
-	<?php
+		<?php if($i%3==0){ ?>
+	</div>
+	<?php } 
+	
 	}
 	?>
+	</div>
 </body>
 
 </html>
