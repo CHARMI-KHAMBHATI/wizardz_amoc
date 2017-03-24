@@ -34,10 +34,11 @@
 	include("connection.php");
 	
 	
-	$sql= "select * from image_table,users order by img_id desc";
+	$sql= "select * from image_table order by img_id desc";
 	$result=mysqli_query($conn, $sql);
 	$result=mysqli_query($conn, $sql);
 	echo "\n";
+	
 	while($row=mysqli_fetch_array($result))
 	{
 	?>
