@@ -43,7 +43,7 @@
 	
 	<div class="col-xs-6 col-md-4" id="contents">
 		
-		<a href="./description.php"><img src="uploads/<?php echo $row['img_name'] ?>"> </a>
+		<a href="./description.php?img=<?php echo $row['img_id']?>"><img src="uploads/<?php echo $row['img_name'] ?>"> </a>
 		 <div id="contents_description">
 		 <p>Name: <span class="description"><?php echo $row['name']; ?></span> </p>
 		 <p>Useful for: <span class="description"><?php echo $row['used_for']; ?></span> </p>
