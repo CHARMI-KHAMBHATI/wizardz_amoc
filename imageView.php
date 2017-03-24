@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 
 <html>
@@ -19,6 +18,7 @@
 	<ul>
 	<li class="col-xs-4 col-md-2"><a href="./imageView.php">Home</a></li>
 	<li class="col-xs-4 col-md-2"><a href="Upload_file.html">Upload</a></li>
+	<li class="col-xs-4 col-md-2"><a href="myUploads.php">MyUploads</a></li>
 	<li class="col-xs-4 col-md-2" id="logout"><a href="./logout.php">Logout</a></li>
 	</ul>
 	</div>	
@@ -53,7 +53,6 @@
 
 	<?php
 	}
-
 	?>
 </body>
 
