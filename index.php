@@ -1,3 +1,17 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+    <title>QuickBucket</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device.width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="./css/style_home.css">
+    <link rel="stylesheet" type="text/css" href="./styles/bootstrap.min.css">
+    <script src="./script/jquery-3.2.0.min.js"></script>
+    <script src="./script/bootstrap.min.js"></script>
+    <style type="text/css">html ,body:100%;</style>
+    </head>
+    <body>
 <?php
 //Include GP config file && User class
 include_once 'gpConfig.php';
@@ -36,17 +50,19 @@ if ($gClient->getAccessToken()) {
     
     //Storing user data into session
     $_SESSION['userData'] = $userData;
-	$_SESSION['email']= $userData['email'];
-	$_SESSION['id']= $userData['oauth_uid'];
-	
-		
+    $_SESSION['email']= $userData['email'];
+    $_SESSION['id']= $userData['oauth_uid'];
+    
+        
     header("location:imageView.php");
-	
+    
 } else {
     $authUrl = $gClient->createAuthUrl();
-    $output = '<a href="'.filter_var($authUrl, FILTER_SANITIZE_URL).'"><img src="images/glogin.png" alt=""/></a>';
+    $output = '<p id="sign_up">Sign Up</p><a href="'.filter_var($authUrl, FILTER_SANITIZE_URL).'"><img src="images/glogin.png" alt=""/></a>';
 }
 
 ?>
 
-<div><?php echo $output;?></div>
+<div id="loginThroughGmail" align="center"><?php echo $output;?></div>
+</body>
+</html>
