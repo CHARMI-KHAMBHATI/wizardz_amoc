@@ -5,13 +5,14 @@
     <title>QuickBucket</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device.width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Bitter" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="./css/style_home.css">
     <link rel="stylesheet" type="text/css" href="./styles/bootstrap.min.css">
     <script src="./script/jquery-3.2.0.min.js"></script>
     <script src="./script/bootstrap.min.js"></script>
     <style type="text/css">html ,body:100%;</style>
     </head>
-    <body>
+    <body id="signup">
 <?php
 //Include GP config file && User class
 include_once 'gpConfig.php';
@@ -58,11 +59,11 @@ if ($gClient->getAccessToken()) {
     
 } else {
     $authUrl = $gClient->createAuthUrl();
-    $output = '<p id="sign_up">Sign Up</p><a href="'.filter_var($authUrl, FILTER_SANITIZE_URL).'"><img src="images/glogin.png" alt=""/></a>';
+    $output = '<a href="'.filter_var($authUrl, FILTER_SANITIZE_URL).'"><img src="images/glogin.png" alt=""/></a>';
 }
 
 ?>
 
-<div id="loginThroughGmail" align="center"><?php echo $output;?></div>
+<div id="sign_up"><p>Sign In</p><div id="loginThroughGmail"><?php echo $output;?></div></div>
 </body>
 </html>
