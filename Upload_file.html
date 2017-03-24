@@ -9,6 +9,27 @@
 	<script src="./script/jquery-3.2.0.min.js"></script>
 	<script src="./script/bootstrap.min.js"></script>
 
+	<script type='text/javascript'>
+	function preview_image(event) 
+	{
+	 var reader = new FileReader();
+	 reader.onload = function()
+	 {
+	  var output = document.getElementById('output_image');
+	  output.src = reader.result;
+	 }
+	 reader.readAsDataURL(event.target.files[0]);
+	}
+	</script>
+	
+	<style>
+	
+	
+	#output_image
+	{
+	 max-width:300px;
+	}
+	</style>
 </head>
 <body>
 	<div class="navigation">
@@ -17,6 +38,7 @@
 	<ul>
 	<li class="col-xs-4 col-md-2"><a href="./imageView.php">Home</a></li>
 	<li class="col-xs-4 col-md-2"><a href="./Upload_file.html">Upload</a></li>
+	<li class="col-xs-4 col-md-2"><a href="myUploads.php">MyUploads</a></li>
 	<li class="col-xs-4 col-md-2" id="logout"><a href="./logout.php">Logout</a></li>
 	</ul>
 	</div>	
@@ -35,10 +57,12 @@
   Description:
   <input type="text" name="description" id="description"><br>
   Image:
-  <input type="file" name="pic" id="pic" accept="image/*"><br>
+  <input type="file" name="pic" id="pic" accept="image/*" onchange="preview_image(event)"><br>
+  <img id="output_image"/><br>
   <input type="submit" name="submit" id="submit">
 
 	</form>
+	
 
 
 </body>
