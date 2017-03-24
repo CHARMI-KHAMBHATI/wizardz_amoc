@@ -42,7 +42,7 @@
 	while($row=mysqli_fetch_array($result))
 	{
 	?>
-	<div class="contents">
+	<div class="col-xs-6 col-md-4" id="contents">
 		
 		<img src="uploads/<?php echo $row['img_name'] ?>" width="20%" height="auto" > 
 		 <p> <?php echo $row['name']; ?> </p>
