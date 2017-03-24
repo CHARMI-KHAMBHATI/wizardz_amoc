@@ -26,7 +26,7 @@
 	</div>
 	</div>
 	
-	<div class=="container">
+	<div class="container">
 	<?php
 	include_once 'gpConfig.php';
 	
