@@ -19,6 +19,7 @@
 	<ul>
 	<li class="col-xs-4 col-md-2"><a href="./imageView.php">Home</a></li>
 	<li class="col-xs-4 col-md-2"><a href="Upload_file.html">Upload</a></li>
+	<li class="col-xs-4 col-md-2"><a href="myUploads.php">MyUploads</a></li>
 	<li class="col-xs-4 col-md-2" id="logout"><a href="./logout.php">Logout</a></li>
 	</ul>
 	</div>	
@@ -46,7 +47,7 @@
 		
 		<img src="uploads/<?php echo $row['img_name'] ?>" width="20%" height="auto" > 
 		 <p> <?php echo $row['name']; ?> </p>
-		 <p><?php echo $row['used_for']; ?> </p>
+		 <p><?php echo $row['used_for']; ?> </p>.
 		 <p><?php echo $row['price']; ?> </p>
 	</div>
 	<?php
