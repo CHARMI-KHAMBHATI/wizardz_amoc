@@ -39,7 +39,7 @@
 	$sql= "select * from image_table where oauth_uid ='$uid' order by img_id desc";
 	$result=mysqli_query($conn, $sql);
 	$result=mysqli_query($conn, $sql);
-	echo "\n";
+	
 	
 	while($row=mysqli_fetch_array($result))
 	{
