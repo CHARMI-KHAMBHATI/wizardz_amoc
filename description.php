@@ -32,6 +32,8 @@
 	$id=$_GET['img'];
 	$sql= "select * from image_table natural join users where img_id='$id'";
 	$result=mysqli_query($conn, $sql);
+	
+	// start printing details of the clicked img
 	while($row=mysqli_fetch_array($result))
 	{
 	?>
@@ -55,64 +57,116 @@
 		<br>Description:
 		<?php echo $row['description'];
 	}
+	// end printing details of the clicked img
 ?>
-	
+
+	<!-- Take user input for a comment -->
 	<form method="post" action="comment_img.php">
+	
 	<input type="text" name="comment_txt" id="comment_txt">
 	<input type="hidden" name="imgid" value="<?php echo $id; ?>">
 		<input type="submit" name="comment" id="comment">
 		
 		<br>
 	</form>	
-	<script type="text/javascript">var i=0;</script>
+	
 		<?php
-		$sql= "select * from comment_images natural join users where img_id='$id'";
+		$sql= "select * from comment_images NATURAL join users where img_id='$id' order by comment_id DESC ";
 		$result=mysqli_query($conn, $sql);
 		
+		
+		// start printing all the comments
 		while($row=mysqli_fetch_array($result))
-		{
+		{	echo "\n";
+			$cid=$row['comment_id'];
 			?>
-			<form>
+			<form method="post" action="comment_images_reply.php">
 			<?php echo $row['first_name']." ".$row['last_name'];?><br>
 			
 			<?php echo "\n".$row['description'];?>
-			<form method="post" action="comment_imgages_reply.php">
-				<input type="submit" name="reply" id="reply" text="Reply">
-				
+			
+			<form >
+			<input type="hidden" name="imgid" value="<?php echo $id; ?>">
+			<input type="hidden" name="comment_id" value="<?php echo $cid; ?>">
+			<input type="text" id="reply_box" style="display:none;" name="reply_box" >
+			<input type="submit" name="reply" id="reply1" text="Reply" value="Reply">
+			<input type="submit" name="reply" id="reply2" text="Reply" value="Reply" style="display:none;">
+			
 			</form>
 			</form>
-			<script type="text/javascript">
-				var input_tag=(document.querySelectorAll("input"))[3];
-				input_tag.addEventListener("click",function(event)
-				{
-					if(i=1)
-					{
-						var form_ele=document.createElement("FORM");
-						form_ele.method="post";
-						form_ele.className="reply";
-						var input_box=document.createElement("input");
-						input.type="text";
-						input.name="reply";
-						input.id="reply_box";
-						form_ele.appendChild(input_box);
-						var form_comment=document.querySelectorAll("form")[2];
-						form_comment.appendChild(form_ele);
-						i=0;
-					}
-					else
-					{
-						var to_remove=document.getElementsByClassName("reply");
-						var form_parent=document.querySelectorAll("form")[2];
-						form_parent.removeChild(to_remove);
-						i=1;
-
-					}
-				})
-			</script>
+			
 			
 			<?php
+			
+			// start printing replies
+			$sql_reply= "select * from reply_comment_img NATURAL JOIN comment_images NATURAL JOIN users where comment_id='$cid' order by reply_id DESC  ";
+			$result_reply=mysqli_query($conn, $sql_reply);
+			while($row=mysqli_fetch_array($result_reply))
+				{
+					echo $row['first_name']." ".$row['last_name'];?><br>
+			
+					<?php echo "\n".$row['reply_msg'];?><br>
+					<?php
+				}// end printing replies
+				
+				?>
+				<br>
+				<?php
+				
 		}
-		
+		// end printing all the comments
 		?>
+		
+		
+		
+		<script type="text/javascript">
+			
+			
+				function show_hide(x){
+					
+					var y=x.previousSibling;
+					y=y.previousSibling;
+					var z=x.nextSibling;
+					z=z.nextSibling;
+					
+						if(y.style.display==="none")
+						{
+							y.style.display="block";
+						}
+						else
+							y.style.display="none";
+						if(x.style.display==="none")
+						{
+							x.style.display="block";
+						}
+						else
+							x.style.display="none";
+				
+				if(z.style.display==="none")
+						{
+							z.style.display="block";
+						}
+						else
+							z.style.display="none";
+				
+				
+					
+				};
+				var submit_btn=document.querySelectorAll("#reply1");
+				for(var j=0;j<submit_btn.length;j++)
+				{
+				submit_btn[j].addEventListener("click",function(event)
+				{
+					show_hide(event.target);
+					console.log(event.target);
+					event.preventDefault();
+					event.stopPropagation();
+				});
+				}
+					
+			
+			</script>
+		
+		
 	</body>
 </html>
