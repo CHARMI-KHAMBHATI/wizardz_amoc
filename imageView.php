@@ -16,17 +16,17 @@
 	<div class="container">
 	<div class="row">
 	<ul>
-	<li class="col-xs-4 col-md-2"><a href="./imageView.php">Home</a></li>
-	<li class="col-xs-4 col-md-2"><a href="Upload_file.html">Upload</a></li>
-	<li class="col-xs-4 col-md-2"><a href="myUploads.php">MyUploads</a></li>
-	<li class="col-xs-4 col-md-2" id="logout"><a href="./logout.php">Logout</a></li>
+	<li class="col-xs-3 col-md-2"><a href="./imageView.php">Home</a></li>
+	<li class="col-xs-3 col-md-2"><a href="Upload_file.html">Upload</a></li>
+	<li class="col-xs-3 col-md-2"><a href="myUploads.php">MyUploads</a></li>
+	<li class="col-xs-3 col-md-2" id="logout"><a href="./logout.php">Logout</a></li>
 	</ul>
 	</div>	
 
 	</div>
 	</div>
-	
-	<div class="container">
+	<div class="container" id="container">
+	<script type="text/javascript">var i=0;</script>
 	<?php
 	include_once 'gpConfig.php';
 	
@@ -36,26 +36,75 @@
 	$sql= "select * from image_table order by img_id desc";
 	$result=mysqli_query($conn, $sql);
 	$result=mysqli_query($conn, $sql);
-	$i=0;
 	while($row=mysqli_fetch_array($result))
-	{$i=$i+1;
+	{
 	?>
-	<?php if($i%3==0){ ?>
-	<div class="row">
-	<?php } ?>
-	<div class="col-xs-6 col-md-4" id="contents">
+		<script type="text/javascript">
+		var node=null;
+		function create(node){
+			return document.createElement(node);
+		}
+		function createChild(parent,child)
+		{
+			 parent.appendChild(child);
+		}
+		var contentDiv=create("div");
+		contentDiv.id="contents";
+		contentDiv.className="col-xs-12 col-sm-6 col-md-3";
+		var a1=create("a");
+		a1.href="./description.php?img=<?php echo $row['img_id']?>";
+		var image=create("img");
+		image.src="uploads/<?php echo $row['img_name'] ?>";
+		createChild(a1,image);
+		createChild(contentDiv,a1);
+		var a2=create("a");
+
+		a2.href="./description.php?img=<?php echo $row['img_id']?>" ;
+		a2.style="text-decoration: none;";
+
+		var contentsDescDiv=create("div");
+		contentsDescDiv.id="contents_description";
+		contentsDescDiv.className="well";
+		var h5Tag=create("h5");
+		h5Tag.style.color="#0d0d0d";
+		h5Tag.style.textTransform="uppercase";
+		var span1=create("span");
+		span1.className="description";
+		createChild(span1,document.createTextNode("<?php echo $row['name']; ?>"));
+		createChild(h5Tag,span1);
+		var p1=create("p");
+		p1.style="color: #404040;";
+		createChild(p1,document.createTextNode("Useful for:"));
+		var span2=create("span");
+		span2.className="description";
+		createChild(span2,document.createTextNode("<?php echo $row['used_for']; ?>"));
+		createChild(p1,span2);
+		var p2=create("p");
+		p2.style="color: #404040;";
+		createChild(p2,document.createTextNode("Price: Rs."));
+		var span3=create("span");
+		span3.className="description";
+		createChild(span3,document.createTextNode(<?php echo $row['price']; ?>));
+		createChild(p2,span3);
+		createChild(contentsDescDiv,h5Tag);
+		createChild(contentsDescDiv,p1);
+		createChild(contentsDescDiv,p2);
+		createChild(a2,contentsDescDiv);
+		createChild(contentDiv,a2);
+
+			if(i%4==0)
+		{
+			var row_div=create("div");
+			row_div.className="row";
+		}
+		i++;
+
+			createChild(row_div,contentDiv);
+			createChild(document.getElementById("container"),row_div);
+
+		</script>
 		
-		<a href="./description.php?img=<?php echo $row['img_id']?>"><img src="uploads/<?php echo $row['img_name'] ?>"> </a>
-		 <div id="contents_description">
-		 <p>Name: <span class="description"><?php echo $row['name']; ?></span> </p>
-		 <p>Useful for: <span class="description"><?php echo $row['used_for']; ?></span> </p>
-		 <p>Price: Rs.<span class="description"><?php echo $row['price'];  echo $i;?></span> </p>
-		 </div>
-	</div>
-		<?php if($i%3==0){ ?>
-	</div>
-	<?php } 
-	
+	<?php  
 	}
 	?>
 	</div>
