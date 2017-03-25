@@ -64,6 +64,7 @@
 		
 		<br>
 	</form>	
+	<script type="text/javascript">var i=0;</script>
 		<?php
 		$sql= "select * from comment_images natural join users where img_id='$id'";
 		$result=mysqli_query($conn, $sql);
@@ -79,7 +80,35 @@
 				<input type="submit" name="reply" id="reply" text="Reply">
 				
 			</form>
-			
+			</form>
+			<script type="text/javascript">
+				var input_tag=(document.querySelectorAll("input"))[3];
+				input_tag.addEventListener("click",function(event)
+				{
+					if(i=1)
+					{
+						var form_ele=document.createElement("FORM");
+						form_ele.method="post";
+						form_ele.className="reply";
+						var input_box=document.createElement("input");
+						input.type="text";
+						input.name="reply";
+						input.id="reply_box";
+						form_ele.appendChild(input_box);
+						var form_comment=document.querySelectorAll("form")[2];
+						form_comment.appendChild(form_ele);
+						i=0;
+					}
+					else
+					{
+						var to_remove=document.getElementsByClassName("reply");
+						var form_parent=document.querySelectorAll("form")[2];
+						form_parent.removeChild(to_remove);
+						i=1;
+
+					}
+				})
+			</script>
 			
 			<?php
 		}
