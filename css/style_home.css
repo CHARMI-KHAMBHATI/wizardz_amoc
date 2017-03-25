@@ -39,14 +39,12 @@ display: block;
 }
 #contents{
 	display: inline-block;
-	width: 25%;
 	height: 30%;
 }
 #contents a img
 {
 	display: inline-block;
-	max-width: 100%;
-	min-width: 100%;
+	width: 100%;
 	height: 15em;
 	object-fit: cover;
 	padding-top: 10px;
@@ -80,3 +78,4 @@ display: block;
 #loginThroughGmail a img{
 	height: 50px;
 }
+
