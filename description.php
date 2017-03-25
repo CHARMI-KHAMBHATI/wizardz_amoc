@@ -56,6 +56,34 @@
 		<?php echo $row['description'];
 	}
 ?>
+	
+	<form method="post" action="comment_img.php">
+	<input type="text" name="comment_txt" id="comment_txt">
+	<input type="hidden" name="imgid" value="<?php echo $id; ?>">
+		<input type="submit" name="comment" id="comment">
+		
 		<br>
+	</form>	
+		<?php
+		$sql= "select * from comment_images natural join users where img_id='$id'";
+		$result=mysqli_query($conn, $sql);
+		
+		while($row=mysqli_fetch_array($result))
+		{
+			?>
+			<form>
+			<?php echo $row['first_name']." ".$row['last_name'];?><br>
+			
+			<?php echo "\n".$row['description'];?>
+			<form method="post" action="comment_imgages_reply.php">
+				<input type="submit" name="reply" id="reply" text="Reply">
+				
+			</form>
+			
+			
+			<?php
+		}
+		
+		?>
 	</body>
 </html>
