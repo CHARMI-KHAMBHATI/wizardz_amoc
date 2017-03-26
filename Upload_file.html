@@ -44,26 +44,58 @@
 	</div>	
 	</div>
 	</div>
+	<div class="container">
 	
-	<form id="file-form" action="getdata.php" method="post" enctype="multipart/form-data">
-  Type of the product: 
-  <input type="text" name="type" id="type"><br>
-  Name of the product:
-  <input type="text" name="name" id="name"><br>
-  Price:
-  <input type="number" name="price" id="price"><br>
-  Will be useful to:
-  <input type="text" name="use" id="use"><br>
-  Description:
-  <input type="text" name="description" id="description"><br>
-  Image:
-  <input type="file" name="pic" id="pic" accept="image/*" onchange="preview_image(event)"><br>
-  <img id="output_image"/><br>
-  <input type="submit" name="submit" id="submit">
+	<form role="form" class="form-horizontal" id="file-form" action="getdata.php" method="post" enctype="multipart/form-data" >
+	   <div class="form-group">
+		<label for="type" class="control-label col-md-3">Type of the product: </label>
+		<div class="col-md-6">
+		<input type="text" name="type" id="type" class="form-control ">
+		</div>
+		</div>
+  
+	  <div class="form-group">
+	  <label for="name" class="control-label col-md-3">Name of the product: </label>
+	  <div class="col-md-6">
+	  <input type="text" name="name" id="name" class="form-control">
+	  </div>
+	  </div>
 
+	  <div class="form-group">
+	  <label for="price" class="control-label col-md-3">Price: </label>
+	  <div class="col-md-6">
+	  <input type="number" name="price" id="price" class="form-control">
+	  </div>
+	  </div>
+
+	  <div class="form-group">
+	  <label for="use" class="control-label col-md-3">Will be useful to: </label>
+	  <div class="col-md-6">
+	  <input type="text" name="use" id="use" class="form-control">
+	  </div>
+	  </div>
+
+	  <div class="form-group">
+	  <label for="description" class="control-label col-md-3">Description: </label>
+	  <div class="col-md-6">
+	  <input type="text" name="description" id="description" class="form-control">
+	  </div>
+	  </div>
+
+	  <div class="form-group">
+	  <label for="image" class="control-label col-md-3">Upload Image: </label>
+	  <div class="col-md-6">
+	  <input type="file" name="pic" id="pic" accept=" image/*" onchange="preview_image(event)" class="form-control">
+	  <img id="output_image"/>
+	  <br>
+	  <input type="submit" name="submit" id="submit">
+	
+	  </div>
+	  </div>
+	
 	</form>
 	
-
+</div>
 
 </body>
 </html>
