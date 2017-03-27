@@ -1,6 +1,6 @@
 <?php
  date_default_timezone_set('Asia/Calcutta');
- include 'comment.inc.php';
+ include 'commentlog.inc.php';
  include 'connect.inc.php';
 
 ?>
@@ -21,7 +21,7 @@
 	echo "<form method='POST' action='".editComment($conn)."'>
 		<input type='hidden' name='cid' value='".$cid."'>
 		<input type='hidden' name='uid' value='".$uid."'>
-		<input type='hidden' name='date' value='".$date."'>
+		<input type='hidden' name='cdate' value='".$cdate."'>
 		<textarea name='message' >".$message."</textarea>
 		<button type='submit' name='commentSubmit' >Edit</button>
 	</form>";
