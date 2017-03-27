@@ -19,15 +19,16 @@ button{
 
 body{
 	background-color:#ddd;
+	margin-bottom:60px;
 }
 
 .commentBox{
-	position:relative;
-	width:800px;
-	padding:20px;
-	margin-bottom:4px;
-	background-color:#fff;
-	border-radius:4px;
+	position: relative;
+	width: 815px;
+	padding: 20px;
+	margin-bottom: 4px;
+	background-color: #fff;
+	border-radius: 4px;
 }
 
 .commentBox p{
@@ -55,3 +56,47 @@ body{
 .edit-form button hover{
 	opacity:1;
 }
+
+.notlogged{
+	float: right;
+	position: absolute;
+	right:10px;
+	bottom:5px;
+}
+
+.reply-form{
+	position:absolute;
+	top:0px;
+	right:20px;
+}
+.reply-form button{
+	width:40px;
+	height:20px;
+	color:#282828;
+	background-color:#fff;
+	opacity:0.7;
+}
+
+.reply-form button hover{
+	opacity:1;
+}
+
+.commentrBox{
+	margin-left:90px;
+	position: relative;
+	width: 815px;
+	padding: 20px;
+	margin-bottom: 4px;
+	background-color: #fff;
+	border-radius: 4px;
+}
+
+.commentrBox p{
+	font-family:arial;
+	font-size:14px;
+	line-height:16px;
+	color:#282828;
+	font-weight:100;
+	margin-left:10px;
+}
+
