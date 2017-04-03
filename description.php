@@ -19,6 +19,7 @@
 	<li class="col-xs-4 col-md-2"><a href="./imageView.php">Home</a></li>
 	<li class="col-xs-4 col-md-2"><a href="Upload_file.html">Upload</a></li>
 	<li class="col-xs-4 col-md-2"><a href="myUploads.php">MyUploads</a></li>
+	<li class="col-xs-4 col-md-2"><a href="commentpage.php">Discuss</a></li>
 	<li class="col-xs-4 col-md-2" id="logout"><a href="./logout.php">Logout</a></li>
 	</ul>
 	</div>	
@@ -38,7 +39,8 @@
 	{
 	?>
 	<br>
-		Uploaded by: 
+		Uploaded by:
+		<img src="<?php echo $row['picture']?>" width="5%" height="auto">		
 		<?php echo $row['first_name']." ".$row['last_name'];?>
 		<br>
 		<img src="uploads/<?php echo $row['img_name']?>" width="20%" height="auto">
@@ -81,9 +83,11 @@
 			$cid=$row['comment_id'];
 			?>
 			<form method="post" action="comment_images_reply.php">
+			<img src="<?php echo $row['picture']?>" width="5%" height="auto">
 			<?php echo $row['first_name']." ".$row['last_name'];?><br>
 			
 			<?php echo "\n".$row['description'];?>
+			
 			
 			<form >
 			<input type="hidden" name="imgid" value="<?php echo $id; ?>">
@@ -99,10 +103,12 @@
 			<?php
 			
 			// start printing replies
-			$sql_reply= "select * from reply_comment_img NATURAL JOIN comment_images NATURAL JOIN users where comment_id='$cid' order by reply_id DESC  ";
+			$sql_reply= "select * from reply_comment_img  NATURAL JOIN users where comment_id='$cid' order by reply_id DESC  ";
 			$result_reply=mysqli_query($conn, $sql_reply);
 			while($row=mysqli_fetch_array($result_reply))
-				{
+				{	?><img src="<?php echo $row['picture']?>" width="5%" height="auto">
+			<?php
+			
 					echo $row['first_name']." ".$row['last_name'];?><br>
 			
 					<?php echo "\n".$row['reply_msg'];?><br>
