@@ -19,6 +19,7 @@
 	<li class="col-xs-3 col-md-2"><a href="./imageView.php">Home</a></li>
 	<li class="col-xs-3 col-md-2"><a href="Upload_file.html">Upload</a></li>
 	<li class="col-xs-3 col-md-2"><a href="myUploads.php">MyUploads</a></li>
+	<li class="col-xs-3 col-md-2"><a href="commentpage.php">Discuss</a></li>
 	<li class="col-xs-3 col-md-2" id="logout"><a href="./logout.php">Logout</a></li>
 	</ul>
 	</div>	
@@ -58,10 +59,8 @@
 		createChild(a1,image);
 		createChild(contentDiv,a1);
 		var a2=create("a");
-
 		a2.href="./description.php?img=<?php echo $row['img_id']?>" ;
 		a2.style="text-decoration: none;";
-
 		var contentsDescDiv=create("div");
 		contentsDescDiv.id="contents_description";
 		contentsDescDiv.className="well";
@@ -91,17 +90,14 @@
 		createChild(contentsDescDiv,p2);
 		createChild(a2,contentsDescDiv);
 		createChild(contentDiv,a2);
-
 			if(i%4==0)
 		{
 			var row_div=create("div");
 			row_div.className="row";
 		}
 		i++;
-
 			createChild(row_div,contentDiv);
 			createChild(document.getElementById("container"),row_div);
-
 		</script>
 		
 	<?php  
