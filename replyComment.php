@@ -1,8 +1,8 @@
 <?php
  date_default_timezone_set('Asia/Calcutta');
- include 'commentlog.inc.php';
- include 'connect.inc.php';
- session_start();
+ include 'setcomment.inc.php';
+ include 'connection.php';
+ include_once 'gpConfig.php';
 ?>
 
 <!DOCTYPE html>

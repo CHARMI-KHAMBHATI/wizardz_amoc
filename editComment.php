@@ -1,8 +1,8 @@
 <?php
  date_default_timezone_set('Asia/Calcutta');
- include 'commentlog.inc.php';
- include 'connect.inc.php';
-
+ include 'setcomment.inc.php';
+ include 'connection.php';
+include_once 'gpConfig.php';
 ?>
 
 <!DOCTYPE html>
@@ -15,7 +15,7 @@
 <?php
 	$uid=$_POST['uid'];
 	$cid=$_POST['cid'];
-	$date=$_POST['date'];
+	$cdate=$_POST['cdate'];
 	$message=$_POST['message'];
 	
 	echo "<form method='POST' action='".editComment($conn)."'>
