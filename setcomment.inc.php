@@ -139,7 +139,7 @@
 						$sql4="SELECT * from replycomments natural join users WHERE cid='$cid'";
 						$result4 = $conn->query($sql4);
 						while($row4 = $result4->fetch_assoc()){
-							if(empty(row4['rmessage'])){
+							if(empty($row4['rmessage'])){
 								
 							}else{
 						echo "<div class='commentrBox'><p>";
@@ -154,6 +154,3 @@
 			}
 		}
 	}
-	
-	
-	
