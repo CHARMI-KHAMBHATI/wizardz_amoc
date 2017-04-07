@@ -9,25 +9,48 @@
 	<link rel="stylesheet" type="text/css" href="./styles/bootstrap.min.css">
 	<script src="./script/jquery-3.2.0.min.js"></script>
 	<script src="./script/bootstrap.min.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Prociono" rel="stylesheet"> 
 	</head>
 	
-	<body>
-	<div class="navigation">
+	<body style="color: white;">
+	<div class="navigation"  >
 	<div class="container">
 	<div class="row">
 	<ul>
-	<li class="col-xs-3 col-md-2"><a href="./imageView.php">Home</a></li>
-	<li class="col-xs-3 col-md-2"><a href="Upload_file.html">Upload</a></li>
-	<li class="col-xs-3 col-md-2"><a href="myUploads.php">MyUploads</a></li>
-	<li class="col-xs-3 col-md-2"><a href="commentpage.php">Discuss</a></li>
-	<li class="col-xs-3 col-md-2" id="logout"><a href="./logout.php">Logout</a></li>
+	<li class="col-xs-3 col-md-2 "><a href="./imageView.php">Home</a></li>
+	<li class="col-xs-3 col-md-2 hidden-xs"><a href="Upload_file.html">Upload</a></li>
+	<li class="col-xs-3 col-md-2 hidden-xs"><a href="myUploads.php">MyUploads</a></li>
+	<li class="col-xs-3 col-md-2 hidden-xs"><a href="commentpage.php">Discuss</a></li>
+	<li class="col-xs-3 col-md-2 hidden-xs" id="logout"><a href="./logout.php">Logout</a></li>
+	 <div class="dropdown visible-xs" style="display: block;
+	color: #ffffff;
+	font-size:1.35em;
+	margin-top:1.25em;
+	padding-top: 17.5px;
+	margin-bottom: 1.25em;position: relative;">
+  		<button class="btn dropdown-toggle" type="button" data-toggle="dropdown" style="background-color: #ffcc5c;float: right;" >
+          <span class="glyphicon glyphicon-menu-hamburger col-xs-3"></span>
+         </button>
+      
+  <ul class="dropdown-menu" style="position: absolute;top: 100%; 
+  right: 0;
+  margin-left: -5px;
+  margin-top: 33px;" >
+    <li><a  style="color: #ffd600;" href="Upload_file.html">Upload</a></li>
+    <li><a  style="color: #ffd600;" href="myUploads.php">MyUploads</a></li>
+
+	<li ><a  style="color: #ffd600;" href="commentpage.php">Discuss</a></li>
+    <li><a   style="color: #ffd600;" href="./logout.php">Logout</a></li>
+  </ul>
+
+</div> 
 	</ul>
 	</div>	
-
 	</div>
 	</div>
 	<div class="container" id="container">
-	<script type="text/javascript">var i=0;</script>
+	<script type="text/javascript">var i=0; j=0;
+	var colors=['#b3ffb3','#b3e6ff','#ffffb3','#c2d6d6','#e1e1d0','#ffd9b3','#ffb3ff']</script>
 	<?php
 	include_once 'gpConfig.php';
 	
@@ -64,6 +87,10 @@
 		var contentsDescDiv=create("div");
 		contentsDescDiv.id="contents_description";
 		contentsDescDiv.className="well";
+		contentsDescDiv.style.backgroundColor=colors[j];
+		j++;
+		if(j>=colors.length)
+			j=0;
 		var h5Tag=create("h5");
 		h5Tag.style.color="#0d0d0d";
 		h5Tag.style.textTransform="uppercase";
@@ -90,6 +117,7 @@
 		createChild(contentsDescDiv,p2);
 		createChild(a2,contentsDescDiv);
 		createChild(contentDiv,a2);
+
 			if(i%4==0)
 		{
 			var row_div=create("div");
