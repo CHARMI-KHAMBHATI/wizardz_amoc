@@ -1,6 +1,8 @@
 <?php
 	function setComment($conn){
 		if(isset($_POST['commentSubmit'])){
+			if(!empty($_POST['message']))
+			{
 			$uid=$_POST['uid'];
 			$cdate=$_POST['cdate'];
 			$message=$_POST['message'];
@@ -9,6 +11,7 @@
 			$result = $conn->query($sql);
 	$_POST['commentSubmit']='NULL';
 		}	
+		}
 	}
 	
 	function getComment($conn){
