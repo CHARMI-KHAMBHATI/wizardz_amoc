@@ -47,27 +47,27 @@ if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg
 // Check if $uploadOk is set to 0 by an error
 if ($uploadOk == 0) {
     echo "Sorry, your file was not uploaded.";
-	
+    
 // if everything is ok, try to upload file
 } else {
     if (move_uploaded_file($_FILES["pic"]["tmp_name"], $target_file)) 
-	{
-		
-		$sql="INSERT INTO image_table(img_name,path,oauth_uid,description,price,type,name,used_for) VALUES('$name','$target_file','$uid','$descp','$price','$type','$nm','$use')";
-		$result=mysqli_query($conn, $sql);
-		if($result)
-		{
-			echo "image uploaded";
-			header("location:imageView.php");
-		
-		}
-		else echo "error".mysqli_error($conn);
-	
-		
-	}  
+    {
+        
+        $sql="INSERT INTO image_table(img_name,path,oauth_uid,description,price,type,name,used_for) VALUES('$name','$target_file','$uid','$descp','$price','$type','$nm','$use')";
+        $result=mysqli_query($conn, $sql);
+        if($result)
+        {
+            echo "image uploaded";
+            header("location:imageView.php");
+        
+        }
+        else echo "error".mysqli_error($conn);
     
-	else 
-	{
+        
+    }  
+    
+    else 
+    {
         echo "Sorry, there was an error uploading your file.";
     }
 }
