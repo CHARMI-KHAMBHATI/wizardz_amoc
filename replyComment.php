@@ -5,22 +5,16 @@
  include_once 'gpConfig.php';
 ?>
 
-<!DOCTYPE html>
-<html>
-<head>
-	<title>ReplyComment</title>
-	<link rel="stylesheet" type="text/css" href="style.css">
-</head>
-<body>
 <?php
-	$cid=$_POST['cid'];
-	echo "<form method='POST' action='".replyComment($conn)."'>
-		<input type='hidden' name='uidr' value='".$_SESSION['id']."'>
-		<input type='hidden' name='cid' value='".$cid."'>
-		<input type='hidden' name='rdate' value='".date('Y-m-d H:i:s')."'>
-		<textarea name='rmessage' ></textarea>
-		<button type='submit' name='replySubmit' >Replybtn</button>
-	</form>";
+	
+	if(isset($_POST['submit'])){
+			$uidr=$_POST['uidr'];
+			$rdate=$_POST['rdate'];
+			$rmessage=$_POST['rmessage'];
+			$cid=$_POST['cid'];
+			$sql="INSERT INTO replycomments(oauth_uid,rdate,rmessage,cid) VALUES ('$uidr','$rdate','$rmessage','$cid')";
+			$result = $conn->query($sql);
+			header("Location:commentpage.php");
+		}
+	
 ?>
-</body>
-</html>
