@@ -8,23 +8,30 @@
     <link href="https://fonts.googleapis.com/css?family=Bitter" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="./css/style_home.css">
     <link rel="stylesheet" type="text/css" href="./styles/bootstrap.min.css">
+    
+    <link href="https://fonts.googleapis.com/css?family=Prociono" rel="stylesheet"> 
     <script src="./script/jquery-3.2.0.min.js"></script>
     <script src="./script/bootstrap.min.js"></script>
-    <style type="text/css">html ,body:100%;</style>
+    <style type="text/css">body{max-height:100vh; overflow-y: hidden;}</style>
     </head>
-    <body id="signup">
+    <body id="signup" >
+
+    <div >
 <?php
 //Include GP config file && User class
 include_once 'gpConfig.php';
 include_once 'User.php';
+
 if(isset($_GET['code'])){
     $gClient->authenticate($_GET['code']);
     $_SESSION['token'] = $gClient->getAccessToken();
     header('Location: ' . filter_var($redirectURL, FILTER_SANITIZE_URL));
 }
+
 if (isset($_SESSION['token'])) {
     $gClient->setAccessToken($_SESSION['token']);
 }
+
 if ($gClient->getAccessToken()) {
     //Get user profile data from google
     $gpUserProfile = $google_oauthV2->userinfo->get();
@@ -56,9 +63,13 @@ if ($gClient->getAccessToken()) {
     
 } else {
     $authUrl = $gClient->createAuthUrl();
-    $output = '<a href="'.filter_var($authUrl, FILTER_SANITIZE_URL).'"><img src="images/glogin.png" alt=""/></a>';
+    $output = '<a href="'.filter_var($authUrl, FILTER_SANITIZE_URL).'"><img src="images/glogin.png" alt=""/></a><p color="white" style="font-size: .3em;">Share.Buy.Discuss</p>';
 }
+
 ?>
+
 <div id="sign_up"><p>Sign In</p><div id="loginThroughGmail"><?php echo $output;?></div></div>
+
+</div>
 </body>
 </html>
